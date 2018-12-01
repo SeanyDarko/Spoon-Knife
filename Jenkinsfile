@@ -1,15 +1,9 @@
 pipeline {
-  agent {
-    docker {
-      image 'node:6-alpine'
-      args 'sudo -p 3000:3000'
-    }
-
-  }
+  agent any
   stages {
     stage('Build') {
       steps {
-        sh 'npm install'
+        sh 'sh \'sudo docker pull python:3.5.1\''
       }
     }
   }
