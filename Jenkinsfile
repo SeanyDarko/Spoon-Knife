@@ -1,10 +1,11 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
-      steps {
-        sh 'sh \'sudo docker pull python:3.5.1\''
-      }
+        stage('Build') {
+            steps {
+                sh 'make' (1)
+                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true (2)
+            }
+        }
     }
-  }
 }
